@@ -5,6 +5,7 @@ class ManageIQ::Providers::Openstack::Inventory::Persister::CinderManager < Mana
                                 cloud_volumes
                                 cloud_volume_snapshots
                                 cloud_volume_backups
+                                cloud_volume_types
                               ),
                               :builder_params => {:ext_management_system => manager})
 

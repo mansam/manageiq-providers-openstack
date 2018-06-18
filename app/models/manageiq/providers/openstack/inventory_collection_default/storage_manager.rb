@@ -61,5 +61,19 @@ class ManageIQ::Providers::Openstack::InventoryCollectionDefault::StorageManager
       }
       super(attributes.merge!(extra_attributes))
     end
+
+    def cloud_volume_types(extra_attributes = {})
+      attributes = {
+        :model_class                 => ::CloudVolumeType,
+        :association                 => :cloud_volume_types,
+        :inventory_object_attributes => [
+          :type,
+          :ems_ref,
+          :name,
+          :volume_backend_name
+        ]
+      }
+      attributes.merge!(extra_attributes)
+    end
   end
 end

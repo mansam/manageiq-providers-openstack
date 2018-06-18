@@ -13,6 +13,12 @@ class ManageIQ::Providers::Openstack::Inventory::Collector::CinderManager < Mana
 
   def cloud_volume_backups
     return @cloud_volume_backups if @cloud_volume_backups.any?
-    @cloud_volume_backups = cinder_service.handled_list(:list_backups_detailed, {:__request_body_index => "backups"}, cinder_admin?)
+    @cloud_volume_backups = []
+    # @cloud_volume_backups = cinder_service.handled_list(:list_backups_detailed, {:__request_body_index => "backups"}, cinder_admin?)
+  end
+
+  def cloud_volume_types
+    return @cloud_volume_types if @cloud_volume_types.any?
+    @cloud_volume_types = cinder_service.handled_list(:volume_types, {}, cinder_admin?)
   end
 end
